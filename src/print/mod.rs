@@ -1,8 +1,14 @@
-// mod blackscholes;
 use std::io;
+use crate::blackscholes::BlackScholes;
 
-
-
+/*
+    option_price 
+    stock_price
+    strike_price
+    risk_free_interest_rate
+    time_to_maturity
+    normal_distribution
+*/
 pub fn prompt() {
     
     loop {
@@ -16,13 +22,58 @@ pub fn prompt() {
                     
                     if number == 1 {
                         println!("RUNNG BLACK SCHOLES");
-                        blackscholes::price_option();
+                    
+                        println!("Enter a Option Price");
+                        let mut _option_price = String::new();
+                        io::stdin().read_line(&mut _option_price).expect("FAILED to read line");
+                    
+                        println!("Enter a Stock Price");
+                        let mut _stock_price = String::new();
+                        io::stdin().read_line(&mut _stock_price).expect("FAILED to read line");
+                    
+                        println!("Enter a Strike Price");
+                        let mut _strike_price = String::new();
+                        io::stdin().read_line(&mut _strike_price).expect("FAILED to read line");
+                    
+                        println!("Enter a Risk Free Interest Rate Price");
+                        let mut _risk_free_interest_rate = String::new();
+                        io::stdin().read_line(&mut _risk_free_interest_rate).expect("FAILED to read line");
+                    
+                        println!("Enter the Time to Maturity Price");
+                        let mut _time_to_maturity = String::new();
+                        io::stdin().read_line(&mut _time_to_maturity).expect("FAILED to read line");
+                        
+                        println!("Enter the Normal Distribution");
+                        let mut _normal_distribution = String::new();
+                        io::stdin().read_line(&mut _normal_distribution).expect("FAILED to read line");   
+
+                        let _option_price_num: u32 = _option_price.trim().parse().expect("Failed to parse input as u32");
+                        let _stock_price_num: u32 = _stock_price.trim().parse().expect("Failed to parse input as u32");
+                        let _strike_price_num: u32 = _strike_price.trim().parse().expect("Failed to parse input as u32");
+                        let _risk_free_interest_rate_num: u32 = _risk_free_interest_rate.trim().parse().expect("Failed to parse input as u32");
+                        let _time_to_maturity_num: u32 = _time_to_maturity.trim().parse().expect("Failed to parse input as u32");
+                        let _normal_distribution_num: u32 = _normal_distribution.trim().parse().expect("Failed to parse input as u32");
+
+                        let black_scholes_model = BlackScholes {    
+                            option_price: _option_price_num, 
+                            stock_price: _stock_price_num,
+                            strike_price: _strike_price_num,
+                            risk_free_interest_rate: _risk_free_interest_rate_num,
+                            time_to_maturity: _time_to_maturity_num,
+                            normal_distribution: _normal_distribution_num,
+                        };
+
+                        
+                       // blackscholes::price_option();
                   
                     
                     }
                     else {
                         println!("RUNNING BINOMIAL METHOD");
-                        binomialoptions::price_option();
+                        
+                        
+                        
+                      //  binomialoptions::price_option();
                     
                     }
                     
