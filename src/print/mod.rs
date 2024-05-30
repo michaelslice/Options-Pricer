@@ -1,14 +1,7 @@
 use std::io;
 use crate::blackscholes::BlackScholes;
 
-/*
-    option_price 
-    stock_price
-    strike_price
-    risk_free_interest_rate
-    time_to_maturity
-    normal_distribution
-*/
+
 pub fn prompt() {
     
     loop {
@@ -18,8 +11,7 @@ pub fn prompt() {
     
         match input.trim().parse::<i16>() {    
             Ok(number) => {
-                if number == 1 || number == 2 {
-                    
+                if number == 1 || number == 2 {                
                     if number == 1 {
                         println!("RUNNG BLACK SCHOLES");
                     
@@ -54,18 +46,19 @@ pub fn prompt() {
                         let _time_to_maturity_num: u32 = _time_to_maturity.trim().parse().expect("Failed to parse input as u32");
                         let _normal_distribution_num: u32 = _normal_distribution.trim().parse().expect("Failed to parse input as u32");
 
-                        let black_scholes_model = BlackScholes {    
-                            option_price: _option_price_num, 
-                            stock_price: _stock_price_num,
-                            strike_price: _strike_price_num,
-                            risk_free_interest_rate: _risk_free_interest_rate_num,
-                            time_to_maturity: _time_to_maturity_num,
-                            normal_distribution: _normal_distribution_num,
-                        };
+                        let user = BlackScholes::build_model(
+                            _option_price_num, 
+                            _stock_price_num,
+                            _strike_price_num,
+                            _risk_free_interest_rate_num,
+                            _time_to_maturity_num,
+                            _normal_distribution_num
+                        );
 
-                        
-                       // blackscholes::price_option();
-                  
+ 
+                            
+
+                     
                     
                     }
                     else {
@@ -73,8 +66,7 @@ pub fn prompt() {
                         
                         
                         
-                      //  binomialoptions::price_option();
-                    
+                     
                     }
                     
                     // break;
