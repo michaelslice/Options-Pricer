@@ -36,15 +36,15 @@ pub fn prompt() {
                         io::stdin().read_line(&mut _time_to_maturity).expect("FAILED to read line");
                         
                         println!("Enter the Normal Distribution");
-                        let mut _normal_distribution = String::new();
-                        io::stdin().read_line(&mut _normal_distribution).expect("FAILED to read line");   
+                        let mut _volatility = String::new();
+                        io::stdin().read_line(&mut _volatility).expect("FAILED to read line");   
 
-                        let _option_price_num: u32 = _option_price.trim().parse().expect("Failed to parse input as u32");
-                        let _stock_price_num: u32 = _stock_price.trim().parse().expect("Failed to parse input as u32");
-                        let _strike_price_num: u32 = _strike_price.trim().parse().expect("Failed to parse input as u32");
-                        let _risk_free_interest_rate_num: u32 = _risk_free_interest_rate.trim().parse().expect("Failed to parse input as u32");
-                        let _time_to_maturity_num: u32 = _time_to_maturity.trim().parse().expect("Failed to parse input as u32");
-                        let _normal_distribution_num: u32 = _normal_distribution.trim().parse().expect("Failed to parse input as u32");
+                        let _option_price_num: f64 = _option_price.trim().parse().expect("Failed to parse input as u32");
+                        let _stock_price_num: f64 = _stock_price.trim().parse().expect("Failed to parse input as u32");
+                        let _strike_price_num: f64 = _strike_price.trim().parse().expect("Failed to parse input as u32");
+                        let _risk_free_interest_rate_num: f64 = _risk_free_interest_rate.trim().parse().expect("Failed to parse input as u32");
+                        let _time_to_maturity_num: f64 = _time_to_maturity.trim().parse().expect("Failed to parse input as u32");
+                        let _volatility: f64 = _volatility.trim().parse().expect("Failed to parse input as u32");
 
                         let user = BlackScholes::build_model(
                             _option_price_num, 
@@ -52,10 +52,10 @@ pub fn prompt() {
                             _strike_price_num,
                             _risk_free_interest_rate_num,
                             _time_to_maturity_num,
-                            _normal_distribution_num
+                            _volatility
                         );
 
- 
+                        
                             
 
                      

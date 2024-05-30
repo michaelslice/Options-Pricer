@@ -1,30 +1,30 @@
 use std::io;
 
 pub struct BlackScholes {
-    pub option_price: u32, 
-    pub stock_price: u32,
-    pub strike_price: u32,
-    pub risk_free_interest_rate: u32,
-    pub time_to_maturity: u32,
-    pub normal_distribution: u32,
+    pub option_price: f64, 
+    pub stock_price: f64,
+    pub strike_price: f64,
+    pub risk_free_interest_rate: f64,
+    pub time_to_maturity: f64,
+    pub volatility: f64,
 }
 impl BlackScholes {
 
     pub fn build_model(
-        option_price: u32, 
-        stock_price: u32,
-        strike_price: u32,
-        risk_free_interest_rate: u32,
-        time_to_maturity: u32,
-        normal_distribution: u32
-    ) -> BlackScholes {
+        option_price: f64, 
+        stock_price: f64,
+        strike_price: f64,
+        risk_free_interest_rate: f64,
+        time_to_maturity: f64,
+        volatility: f64
+    ) -> Self {
         BlackScholes {
         option_price,
         stock_price,
         strike_price,
         risk_free_interest_rate,
         time_to_maturity,
-        normal_distribution
+        volatility
         }
     }
     
@@ -32,10 +32,5 @@ impl BlackScholes {
     pub fn price_option(&self) {
 
   
-    }
-    
-    
-
-
+    }   
 }
-
