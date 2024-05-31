@@ -13,7 +13,7 @@ pub fn prompt() {
             Ok(number) => {
                 if number == 1 || number == 2 {                
                     if number == 1 {
-                        println!("Enter a Stock Price");
+                        println!("Enter the Stock Price");
                         let mut _stock_price = String::new();
                         io::stdin().read_line(&mut _stock_price).expect("FAILED to read line");
                     
@@ -21,11 +21,11 @@ pub fn prompt() {
                         let mut _strike_price = String::new();
                         io::stdin().read_line(&mut _strike_price).expect("FAILED to read line");
                     
-                        println!("Enter the Risk Free Interest Rate (annual)");
+                        println!("Enter the Risk-Free Interest Rate (annual)");
                         let mut _risk_free_interest_rate = String::new();
                         io::stdin().read_line(&mut _risk_free_interest_rate).expect("FAILED to read line");
                     
-                        println!("Enter the Time to Expiry (in years)");
+                        println!("Enter the Time to Expiration (in years)");
                         let mut _time_to_maturity = String::new();
                         io::stdin().read_line(&mut _time_to_maturity).expect("FAILED to read line");
                         

@@ -1,7 +1,9 @@
 use std::io;
+use statrs::function::*;
+use statrs::distribution::{Normal, Continuous, ContinuousCDF, Uniform};
+use statrs::statistics::Distribution;
 
 pub struct BlackScholes {
- 
     pub stock_price: f64,
     pub strike_price: f64,
     pub risk_free_interest_rate: f64,
@@ -11,7 +13,6 @@ pub struct BlackScholes {
 impl BlackScholes {
 
     pub fn build_model(
- 
         stock_price: f64,
         strike_price: f64,
         risk_free_interest_rate: f64,
@@ -19,7 +20,6 @@ impl BlackScholes {
         volatility: f64
     ) -> Self {
         BlackScholes {
-
         stock_price,
         strike_price,
         risk_free_interest_rate,
@@ -30,31 +30,41 @@ impl BlackScholes {
     
     pub fn price_option_call(&self) -> f64 {
     
-        let natural_log_base: f64 = 2.71828;
-    
-        let d1: f64 = (self.stock_price / self.strike_price) 
-            + (self.risk_free_interest_rate + (self.volatility.powf(2.0) / 2.0))
-                / ((self.volatility as f64) * (self.time_to_maturity as f64).sqrt());
+        let natural_log_base: f64 = 2.7182818;
+        let volatility_range: f64 = 0.1;
         
-        let d2: f64 = d1 - self.volatility * self.time_to_maturity;
-    
-        let c: f64 = d1 * self.stock_price - d2 * self.strike_price * natural_log_base.powf(self.risk_free_interest_rate * self.time_to_maturity); 
-    
+        let d1: f64 = (self.stock_price / self.strike_price).ln()
+            + (self.risk_free_interest_rate + (self.volatility.powf(2.0) / 2.0)) * self.time_to_maturity
+            / (self.volatility * self.time_to_maturity.sqrt());
+         
+        let d2: f64 = d1 - self.volatility * self.time_to_maturity.sqrt();
+
+        let standard_normal = Normal::new(0.0, 1.0).unwrap();
+        let cdf_d1 = standard_normal.cdf(d1);
+        let cdf_d2 = standard_normal.cdf(d2);
+
+        let c: f64 = self.stock_price * cdf_d1 - self.strike_price * (-self.risk_free_interest_rate * self.time_to_maturity).exp() * cdf_d2; 
+
         c
     }  
 
     pub fn price_option_put(&self) -> f64 {
 
-    let natural_log_base: f64 = 2.71828;
-
-    let d1: f64 = (self.stock_price / self.strike_price) 
-        + (self.risk_free_interest_rate + (self.volatility.powf(2.0) / 2.0))
-            / ((self.volatility as f64) * (self.time_to_maturity as f64).sqrt());
+        let natural_log_base: f64 = 2.7182818;
+        let volatility_range: f64 = 0.1;
+        
+        let d1: f64 = (self.stock_price / self.strike_price).ln()
+            + (self.risk_free_interest_rate + (self.volatility.powf(2.0) / 2.0)) * self.time_to_maturity
+            / (self.volatility * self.time_to_maturity.sqrt());
     
-    let d2: f64 = d1 - self.volatility * self.time_to_maturity;
+        let d2: f64 = d1 - self.volatility * self.time_to_maturity.sqrt();
 
-    let p: f64 = (self.strike_price * natural_log_base).powf(-self.risk_free_interest_rate * self.time_to_maturity)
-        * d1 - self.stock_price * d2; 
+        let standard_normal = Normal::new(0.0, 1.0).unwrap();
+        let cdf_d1 = standard_normal.cdf(-d1);
+        let cdf_d2 = standard_normal.cdf(-d2);
+
+        let p = self.strike_price * (-self.risk_free_interest_rate * self.time_to_maturity).exp() * cdf_d2
+            - self.stock_price * cdf_d1;
 
         p
     }   
