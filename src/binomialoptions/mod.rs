@@ -28,7 +28,7 @@ impl BinomialOptions {
         volatility
         }
     }
-    
+/*
     pub fn price_option(&self) -> f64 {
     
     let natural_log_base: f64 = 2.71828;
@@ -43,5 +43,5 @@ impl BinomialOptions {
 
         c
     }
-
+ */
 }
