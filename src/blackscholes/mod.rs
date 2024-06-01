@@ -1,7 +1,4 @@
-use std::io;
-use statrs::function::*;
-use statrs::distribution::{Normal, Continuous, ContinuousCDF, Uniform};
-use statrs::statistics::Distribution;
+use statrs::distribution::{Normal, ContinuousCDF};
 
 pub struct BlackScholes {
     pub stock_price: f64,
@@ -30,9 +27,6 @@ impl BlackScholes {
     
     pub fn price_option_call(&self) -> f64 {
     
-        let natural_log_base: f64 = 2.7182818;
-        let volatility_range: f64 = 0.1;
-        
         let d1: f64 = (self.stock_price / self.strike_price).ln()
             + (self.risk_free_interest_rate + (self.volatility.powf(2.0) / 2.0)) * self.time_to_maturity
             / (self.volatility * self.time_to_maturity.sqrt());
@@ -49,9 +43,6 @@ impl BlackScholes {
     }  
 
     pub fn price_option_put(&self) -> f64 {
-
-        let natural_log_base: f64 = 2.7182818;
-        let volatility_range: f64 = 0.1;
         
         let d1: f64 = (self.stock_price / self.strike_price).ln()
             + (self.risk_free_interest_rate + (self.volatility.powf(2.0) / 2.0)) * self.time_to_maturity
