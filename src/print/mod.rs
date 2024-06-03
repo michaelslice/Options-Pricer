@@ -118,6 +118,10 @@ pub fn prompt() {
                         
                     }
                 }
+                else if number  == 3 {
+                    break;
+                }
+                
                 else {
                     println!("Error you entered {}, please enter either 1, 2, or 3", input);
             

@@ -6,7 +6,4 @@ mod binomialoptions;
 fn main() {
 
     print::prompt();
-
-
-
 }
