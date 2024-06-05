@@ -74,4 +74,8 @@ Where $C_{i}{_j}$ represents the contract price at each node $(i, j)$, and $C{_N
 
 In this project a European call option is priced using the equation, $C{_N}{_j} = max(S{_N}{_j} - K, 0)$
 
+## How to Use
 
+1. `git clone https://github.com/michaelslice/Options-Pricer.git`
+2. `cd Options-Pricer`
+3. `cargo run`
