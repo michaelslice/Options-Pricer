@@ -1,5 +1,5 @@
 ## Options-Pricer
-A simple command line tool used to price European Options and American Options using the Black Scholes Equation, and the Binomial Options Pricing Model.
+A simple command line tool used to price European Options using the Black-Scholes Equation, and the Binomial Options Pricing Model.
 
 ## Black Scholes Model
 
@@ -8,7 +8,12 @@ A simple command line tool used to price European Options and American Options u
 
 ## Binomial Options Pricing Model
 
-The stock tree is represented using node $(i, j)$ with initial stock price $S0$ <br>
+The binomial tree is represented as a network of nodes as $(i, j)$, with i representing the time steps and j representing the number of ordered price outcomes
+(lowest - or bottom of tree - to highest) <br>
+
+## Binomial Tree Representation
+
+The stock tree is represented using nodes $(i, j)$, with initial stock price $S0$ <br>
 
 $S{_i}{_j} = S_0u^jd^{i-j}$ <br>
 
