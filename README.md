@@ -64,7 +64,7 @@ Rho is the first derivative of option price with respect to interest rate $r$. I
 The binomial tree is represented as a network of nodes as $(i, j)$, with i representing the time steps and j representing the number of ordered price outcomes
 (lowest - or bottom of tree - to highest) <br>
 
-### Binomial Options Inputs
+### Binomial Options Pricing Model Inputs
 
 - $S$ = underlying price ($$$ per share)
 - $K$ = strike price ($$$ per share)
