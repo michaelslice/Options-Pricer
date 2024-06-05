@@ -58,5 +58,15 @@ impl BlackScholes {
             - self.stock_price * cdf_d1;
 
         p
+    }
+
+    pub fn price_delta_call(&self) -> f64 {
+        
+        12.0
     }   
+
+    pub fn price_delta_put(&self) -> f64 {
+        
+        12.0
+    } 
 }

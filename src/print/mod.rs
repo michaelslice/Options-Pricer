@@ -117,11 +117,10 @@ pub fn prompt() {
                         println!("The Option Price Call is ${:.2}", ans);
                         
                     }
-                }
+                } 
                 else if number  == 3 {
                     break;
-                }
-                
+                } 
                 else {
                     println!("Error you entered {}, please enter either 1, 2, or 3", input);
             
