@@ -50,10 +50,11 @@ pub fn prompt() {
                         );
 
                         let ans: f64 = BlackScholes::price_option_call(&option_contract);
-                        println!("The Option Price Call is ${:.2}", ans);
-                            
+                        println!("Call Option Price ${:.2}", ans);
+                        println!(" ");
+
                         let ans: f64 = BlackScholes::price_option_put(&option_contract);
-                        println!("The Option Price Put is ${:.2}", ans);   
+                        println!("Put Option Price ${:.2}", ans);   
 
                     }
                     else {
@@ -114,7 +115,7 @@ pub fn prompt() {
                             , _up_factor_num
                             , _down_factor_num
                         );
-                        println!("The Option Price Call is ${:.2}", ans);
+                        println!("Call Option Price ${:.2}", ans);
                         
                     }
                 } 
